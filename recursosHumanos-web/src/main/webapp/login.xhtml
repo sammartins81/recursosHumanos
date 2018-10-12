@@ -1,0 +1,78 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/plantillas/contenedorLimpio.xhtml">
+
+	<ui:define name="titulo">
+        Login
+    </ui:define>
+	<ui:define name="contenido">
+		<h:form>
+			<div align="center">
+				
+				<div class="container">
+			        <div class="card card-container">
+			        <img id="profile-img" class="profile-img-card" src="../img/logo.png" style="width:200px !important"/>
+			        <br/>
+			        <br/>
+			           <strong><h:outputLabel value="Usuario" /></strong>
+									<h:inputText 
+									id="userName"
+									styleClass="form-control" 
+									style="width: 20% !important;"
+									value="#{loginControlador.usuario}"
+									required="true" 
+									requiredMessage="Campo obligatorio">
+									</h:inputText>
+									<p:message id="msjUserName" for="userName" style="margin-top: 5px;"/>
+									
+									<br/>
+									
+									<strong><h:outputLabel value="Contraseña" /></strong>
+									<h:panelGroup>
+									<h:inputSecret  
+									id="password" 
+									styleClass="form-control"
+									style="width: 20% !important;"
+									value="#{loginControlador.contrasenia}" 
+									maxlength="255"
+									required="true" 
+									requiredMessage="Campo obligatorio">
+									</h:inputSecret>
+									</h:panelGroup>
+									<p:message id="msjPassword" for="password" style="margin-top: 5px;"/>
+									<br/>
+									
+									<p:commandButton styleClass="btn btn-success btn-sm" value="Iniciar sesión" action="#{loginControlador.iniciarSesion()}" update="alertaLogueo"></p:commandButton>
+			            
+			            			<br/>
+			            			
+			            			<h:panelGroup id="alertaLogueo">
+							<h:panelGroup
+								rendered="#{loginControlador.logueoIncorrecto != null and loginControlador.logueoIncorrecto}">
+								<br/>
+								<div class="alert-danger">
+									<strong><h:outputLabel
+											value="NO SE HA PODIDO INICIAR SU SESIÓN." /></strong><br />
+									<h:outputLabel
+										value="#{loginControlador.mensajeNoLogueo}" />
+								</div>
+							</h:panelGroup>
+						</h:panelGroup>
+			            
+			            
+			            
+			        </div>
+			    </div>
+				
+				
+				
+				
+				
+				
+			</div>
+		</h:form>
+		<br/><br/>
+	</ui:define>
+</ui:composition>

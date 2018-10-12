@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<body>
+	<ui:composition>
+		<nav class="navbar navbar-custom navbar-fixed-top" role="navigation"
+			style="background: #67b0d1;">
+		<div class="container">
+			<div class="navbar-header page-scroll">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-main-collapse">
+					<i class="fa fa-bars"></i>
+				</button>
+				<a class="navbar-brand">
+					<h1>#{sessionControlador.nombreUsuario}</h1>
+				</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div
+				class="collapse navbar-collapse navbar-right navbar-main-collapse">
+				<h:form>
+					<ul class="nav navbar-nav">
+						<li><h:commandLink
+								action="#{sessionControlador.cerrarSesion()}"
+								value="Cerrar sesión">
+							</h:commandLink></li>
+					</ul>
+				</h:form>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container --> </nav>
+	</ui:composition>
+</body>
+</html>

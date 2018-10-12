@@ -29,5 +29,12 @@ public interface EmpresaFacadeLocal {
     List<Empresa> findRange(int[] range);
 
     int count();
+
+    /**
+     * Metodo que obtiene una empresa de persona
+     * @param persona
+     * @return
+     */
+	Empresa obtenerEmpresaXPersona(Integer persona);
     
 }

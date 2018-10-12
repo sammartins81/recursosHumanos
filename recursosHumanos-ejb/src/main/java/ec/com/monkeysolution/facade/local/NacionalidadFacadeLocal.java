@@ -29,5 +29,11 @@ public interface NacionalidadFacadeLocal {
     List<Nacionalidad> findRange(int[] range);
 
     int count();
+
+    /**
+     * Metodo que obtiene las nacionalidades
+     * @return
+     */
+	List<Nacionalidad> obtenerNacionalidades();
     
 }

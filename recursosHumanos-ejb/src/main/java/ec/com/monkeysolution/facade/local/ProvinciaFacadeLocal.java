@@ -29,5 +29,12 @@ public interface ProvinciaFacadeLocal {
     List<Provincia> findRange(int[] range);
 
     int count();
+
+    /**
+     * Metodo que obtiene las provincias de un pais
+     * @param pais
+     * @return
+     */
+	List<Provincia> obtenerProvinciaXPais(Integer pais);
     
 }

@@ -29,5 +29,12 @@ public interface AreaFacadeLocal {
     List<Area> findRange(int[] range);
 
     int count();
+
+    /**
+     * Metodo que obtiene las areas de un departamento
+     * @param departamento
+     * @return
+     */
+	List<Area> obtenerAreaXDepartamento(Integer departamento);
     
 }

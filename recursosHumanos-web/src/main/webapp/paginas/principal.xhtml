@@ -1,0 +1,62 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	template="/plantillas/contenedor_interno.xhtml">
+
+	<ui:define name="titulo">
+        SISTEMA DE RECURSOS HUMANOS
+    </ui:define>
+	<ui:define name="contenido">
+		<h:form id="formPrincipal">
+			<p:messages globalOnly="true" showDetail="true" autoUpdate="true"
+				closable="true" />
+			<div class="container">
+				<div class="row profile">
+					<div class="col-md-3">
+						<div class="profile-sidebar">
+							<!-- SIDEBAR USERPIC -->
+							<div class="profile-userpic">
+								<p:graphicImage styleClass="img-responsive img-circle" height="300px" width="300px" url="../img/perfil.jpg" rendered="#{sessionControlador.persona.foto == null}"/>
+								<p:graphicImage styleClass="img-responsive img-circle" height="300px" width="300px" value="#{sessionControlador.imagen}" rendered="#{sessionControlador.persona.foto != null}"/>
+							</div>
+							<!-- END SIDEBAR USERPIC -->
+							<!-- SIDEBAR USER TITLE -->
+							<div class="profile-usertitle">
+								<div class="profile-usertitle-name">#{sessionControlador.persona.puesto.nombre}</div>
+<!-- 								<div class="profile-usertitle-job">#{sessionControlador.persona.puesto.nombre}</div> -->
+								
+							</div>
+						</div>
+					</div>
+					<div class="col-md-9">
+						<div class="profile-content">
+							
+							<div class="panel panel-info">
+							  <div class="panel-heading">
+							    <h3 class="panel-title">Evaluaciones</h3>
+							  </div>
+							  <div class="panel-body">
+							    No tiene evaluaciones pendientes
+							  </div>
+							</div>
+							
+							<div class="panel panel-info">
+							  <div class="panel-heading">
+							    <h3 class="panel-title">Notificaciones</h3>
+							  </div>
+							  <div class="panel-body">
+							    <p:repeat var="notificacion" value="#{principalControlador.notificaciones}">
+							    	#{notificacion}
+							    </p:repeat>
+							  </div>
+							</div>
+						
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

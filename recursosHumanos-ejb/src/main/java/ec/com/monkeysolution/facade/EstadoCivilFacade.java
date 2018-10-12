@@ -5,11 +5,16 @@
  */
 package ec.com.monkeysolution.facade;
 
+import ec.com.monkeysolution.enumerador.EstadoEnum;
 import ec.com.monkeysolution.facade.local.EstadoCivilFacadeLocal;
 import ec.com.monkeysolution.modelo.EstadoCivil;
+
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,6 +33,15 @@ public class EstadoCivilFacade extends AbstractFacade<EstadoCivil> implements Es
 
     public EstadoCivilFacade() {
         super(EstadoCivil.class);
+    }
+    
+    @SuppressWarnings("unchecked")
+	@Override
+    public List<EstadoCivil> obtenerEstadoCivil()
+    {
+    	Query q = em.createQuery("Select e from EstadoCivil e where e.estado = :estado order by e.nombre");
+    	q.setParameter("estado", EstadoEnum.ACTIVO.getValor());
+    	return q.getResultList();
     }
     
 }

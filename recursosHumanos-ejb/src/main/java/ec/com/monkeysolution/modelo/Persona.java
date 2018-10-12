@@ -8,6 +8,7 @@ package ec.com.monkeysolution.modelo;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,7 +17,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -76,7 +76,6 @@ public class Persona implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "identificacion")
     private String identificacion;
-    @Lob
     @Column(name = "foto")
     private byte[] foto;
     @Basic(optional = false)

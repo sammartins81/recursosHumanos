@@ -5,11 +5,16 @@
  */
 package ec.com.monkeysolution.facade;
 
+import ec.com.monkeysolution.enumerador.EstadoEnum;
 import ec.com.monkeysolution.facade.local.PaisFacadeLocal;
 import ec.com.monkeysolution.modelo.Pais;
+
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,6 +33,15 @@ public class PaisFacade extends AbstractFacade<Pais> implements PaisFacadeLocal 
 
     public PaisFacade() {
         super(Pais.class);
+    }
+    
+    @SuppressWarnings("unchecked")
+	@Override
+    public List<Pais> obtenerPais()
+    {
+    	Query q = em.createQuery("Select p from Pais p where p.estado = :estado order by p.nombre");
+    	q.setParameter("estado", EstadoEnum.ACTIVO.getValor());
+    	return q.getResultList();
     }
     
 }

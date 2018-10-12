@@ -29,5 +29,11 @@ public interface EstadoCivilFacadeLocal {
     List<EstadoCivil> findRange(int[] range);
 
     int count();
+
+    /**
+     * Metodo que obtiene los estados civiles
+     * @return
+     */
+	List<EstadoCivil> obtenerEstadoCivil();
     
 }

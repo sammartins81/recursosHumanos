@@ -29,5 +29,12 @@ public interface CantonFacadeLocal {
     List<Canton> findRange(int[] range);
 
     int count();
+
+    /**
+     * Metodo que obtiene los cantones de una provincia
+     * @param provincia
+     * @return
+     */
+	List<Canton> obtenerCantonesXProvincia(Integer provincia);
     
 }

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+<meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content=""/>
+  <meta name="author" content=""/>
+
+  <title>Recursos Humanos</title>
+	
+	<!-- Bootstrap Core CSS -->
+  <link href="#{request.contextPath}/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+  <!-- Fonts -->
+  <link href="#{request.contextPath}/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+  <link href="#{request.contextPath}/css/animate.css" rel="stylesheet" />
+  <!-- Squad theme CSS -->
+  <link href="#{request.contextPath}/css/style.css" rel="stylesheet"/>
+  <link href="#{request.contextPath}/color/default.css" rel="stylesheet"/>
+
+</h:head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+<div id="preloader">
+    <div id="load"></div>
+  </div>
+
+  <ui:insert name="menu">
+		<ui:include src="/plantillas/menu_principal.xhtml" />
+  </ui:insert>
+
+  <!-- Section: intro -->
+  <section id="intro" class="intro">
+
+    <div class="slogan">
+    	<br/>
+    	<br/>
+    	<br/>
+    	<br/>
+      <h2>BIENVENIDO A <span class="text_color">MONKEY-SOLUTION</span> </h2>
+      <h4>TE OFRECEMOS GRAN VARIEDADES DE SERVICIOS PARA LA GESTIÓN DEL TALENTO HUMANO</h4>
+    </div>
+    <div class="page-scroll">
+      <a href="#service" class="btn btn-circle">
+				<i class="fa fa-angle-double-down animated"></i>
+			</a>
+    </div>
+  </section>
+  <!-- /Section: intro -->
+
+  <!-- Section: about -->
+<!--   	<ui:insert name="promociones"> -->
+<!-- 		<ui:include src="/plantillas/promociones_principal.xhtml" /> -->
+<!--   </ui:insert> -->
+  <!-- /Section: about -->
+
+
+  <!-- Section: services -->
+  	<ui:insert name="servicios">
+		<ui:include src="/plantillas/servicios_principal.xhtml" />
+  	</ui:insert>
+  <!-- /Section: services -->
+
+  <!-- Section: contact -->
+  
+  <!-- /Section: contact -->
+
+  <ui:insert name="pie">
+		<ui:include src="/plantillas/pie_principal.xhtml" />
+  	</ui:insert>
+
+  <!-- Core JavaScript Files -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.min.js"></script>
+  <script src="js/jquery.scrollTo.js"></script>
+  <script src="js/wow.min.js"></script>
+  <!-- Custom Theme JavaScript -->
+  <script src="js/custom.js"></script>
+  <script src="contactform/contactform.js"></script>
+
+</body>
+
+</html>

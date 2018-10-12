@@ -29,5 +29,12 @@ public interface ParroquiaFacadeLocal {
     List<Parroquia> findRange(int[] range);
 
     int count();
+
+    /**
+     * Metodo que obtiene las parroquias de un canton
+     * @param canton
+     * @return
+     */
+	List<Parroquia> obtenerParroquiaXCanton(Integer canton);
     
 }

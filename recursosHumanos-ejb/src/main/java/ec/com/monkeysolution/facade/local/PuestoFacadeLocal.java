@@ -29,5 +29,12 @@ public interface PuestoFacadeLocal {
     List<Puesto> findRange(int[] range);
 
     int count();
+
+    /**
+     * Metodo que obtiene los puestos de acuerdo al tipo
+     * @param tipo
+     * @return
+     */
+	List<Puesto> obtenerPuestosXTipo(Integer tipo, Integer area);
     
 }

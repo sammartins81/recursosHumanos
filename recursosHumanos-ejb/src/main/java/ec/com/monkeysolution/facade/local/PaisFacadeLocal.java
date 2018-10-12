@@ -29,5 +29,11 @@ public interface PaisFacadeLocal {
     List<Pais> findRange(int[] range);
 
     int count();
+
+    /**
+     * Metodo que obtiene los paises
+     * @return
+     */
+	List<Pais> obtenerPais();
     
 }

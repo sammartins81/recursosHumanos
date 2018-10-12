@@ -26,6 +26,39 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+			<groupId>ec.com.monkeysolution</groupId>
+			<artifactId>recursosHumanos-ejb</artifactId>
+			<version>1</version>
+			<scope>provided</scope>
+		</dependency>
+        <dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>3.0.7.RELEASE</version>
+			<scope>provided</scope>
+		</dependency>
     </dependencies>
 
     <build>

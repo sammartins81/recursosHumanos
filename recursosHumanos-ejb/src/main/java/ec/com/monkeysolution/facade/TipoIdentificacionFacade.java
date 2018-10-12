@@ -5,11 +5,16 @@
  */
 package ec.com.monkeysolution.facade;
 
-import ec.com.monkeysolution.facade.local.TipoIdentificacionFacadeLocal;
-import ec.com.monkeysolution.modelo.TipoIdentificacion;
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
+import ec.com.monkeysolution.enumerador.EstadoEnum;
+import ec.com.monkeysolution.facade.local.TipoIdentificacionFacadeLocal;
+import ec.com.monkeysolution.modelo.TipoIdentificacion;
 
 /**
  *
@@ -28,6 +33,15 @@ public class TipoIdentificacionFacade extends AbstractFacade<TipoIdentificacion>
 
     public TipoIdentificacionFacade() {
         super(TipoIdentificacion.class);
+    }
+    
+    @SuppressWarnings("unchecked")
+	@Override
+    public List<TipoIdentificacion> obtenerTipoIdentificacion()
+    {
+    	Query q = em.createQuery("Select ti from TipoIdentificacion ti where ti.estado = :estado order by ti.nombre asc");
+    	q.setParameter("estado", EstadoEnum.ACTIVO.getValor());
+    	return q.getResultList();
     }
     
 }

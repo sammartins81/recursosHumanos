@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+<meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content=""/>
+  <meta name="author" content=""/>
+
+  <title>Sistema de Facturacion</title>
+	
+	<!-- Bootstrap Core CSS -->
+  <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+  <!-- Fonts -->
+  <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+  <link href="../css/animate.css" rel="stylesheet" />
+  <!-- Squad theme CSS -->
+  <link href="../css/style.css" rel="stylesheet"/>
+  <link href="../color/default.css" rel="stylesheet"/>
+
+</h:head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom" style="background-color: #f6f6f6">
+<div id="preloader">
+    <div id="load"></div>
+  </div>
+
+
+	<p:ajaxStatus onstart="PF('statusDialog').show()"
+					onsuccess="PF('statusDialog').hide()" />
+				<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+					closable="false" resizable="false" showHeader="false">
+					<h:graphicImage value="/img/spinner.gif" alt="ai" />
+                            Por favor espere...
+	</p:dialog>
+
+	<section class="home-section text-center">
+		    <div class="container">
+				<ui:insert name="contenido">
+					<h:outputText value="Contenido de la p&#255;gina" />
+				</ui:insert>     
+		    </div>
+		  </section>
+
+	
+  
+
+  <!-- Core JavaScript Files -->
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/jquery.easing.min.js"></script>
+  <script src="../js/jquery.scrollTo.js"></script>
+  <script src="../js/wow.min.js"></script>
+  <!-- Custom Theme JavaScript -->
+  <script src="../js/custom.js"></script>
+  <script src="../contactform/contactform.js"></script>
+<!--     <script src="../js/jquery.min.js"></script> -->
+
+</body>
+
+</html>

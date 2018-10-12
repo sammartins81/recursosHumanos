@@ -15,6 +15,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -77,6 +79,9 @@ public class Pregunta implements Serializable {
     private List<PreguntaSeccion> preguntaSeccionList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pregunta")
     private List<Respuesta> respuestaList;
+    @JoinColumn(name = "empresa", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Empresa empresa;
 
     public Pregunta() {
     }
@@ -167,7 +172,15 @@ public class Pregunta implements Serializable {
         this.respuestaList = respuestaList;
     }
 
-    @Override
+    public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);

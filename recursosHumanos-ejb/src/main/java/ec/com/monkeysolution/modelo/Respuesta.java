@@ -79,6 +79,9 @@ public class Respuesta implements Serializable {
     @JoinColumn(name = "pregunta", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Pregunta pregunta;
+    @JoinColumn(name = "evaluado", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Persona evaluado;
 
     public Respuesta() {
     }
@@ -175,7 +178,15 @@ public class Respuesta implements Serializable {
         this.pregunta = pregunta;
     }
 
-    @Override
+    public Persona getEvaluado() {
+		return evaluado;
+	}
+
+	public void setEvaluado(Persona evaluado) {
+		this.evaluado = evaluado;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);

@@ -10,6 +10,7 @@ import ec.com.monkeysolution.modelo.Empresa;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -30,4 +31,16 @@ public class EmpresaFacade extends AbstractFacade<Empresa> implements EmpresaFac
         super(Empresa.class);
     }
     
+    @Override
+    public Empresa obtenerEmpresaXPersona(Integer persona)
+    {
+    	try {
+    		Query q = em.createQuery("Select e from Persona p inner join fetch p.area a inner join fetch a.departamento d inner join fetch d.empresa e where p.id = :persona");
+        	q.setParameter("persona", persona);
+        	return (Empresa) q.getSingleResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+    }
 }

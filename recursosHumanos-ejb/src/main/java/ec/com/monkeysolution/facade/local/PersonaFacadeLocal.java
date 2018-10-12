@@ -5,9 +5,11 @@
  */
 package ec.com.monkeysolution.facade.local;
 
-import ec.com.monkeysolution.modelo.Persona;
 import java.util.List;
+
 import javax.ejb.Local;
+
+import ec.com.monkeysolution.modelo.Persona;
 
 /**
  *
@@ -29,5 +31,18 @@ public interface PersonaFacadeLocal {
     List<Persona> findRange(int[] range);
 
     int count();
+
+    /**
+     * Metodo que obtiene la persona por identificacion
+     * @param identificacion
+     * @return
+     */
+	Persona obtenerPersonaXIdentificacion(String identificacion);
+
+	/**
+	 * Metodo que obtiene los cumpleañeros
+	 * @return
+	 */
+	List<String> obtenerCumpleañeros();
     
 }

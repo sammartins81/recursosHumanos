@@ -1,0 +1,204 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	template="/plantillas/contenedor_interno.xhtml">
+
+	<ui:define name="titulo">
+        SISTEMA DE RECURSOS HUMANOS
+    </ui:define>
+	<ui:define name="contenido">
+		<h:form id="formIngresoPerfil">
+			<div class="container">
+				<div class="row profile">
+					<div class="col-md-3">
+						<div class="profile-sidebar">
+							<!-- SIDEBAR USERPIC -->
+							<div class="profile-userpic">
+								<h:panelGroup id="fotoPerilId">
+									<p:graphicImage styleClass="img-responsive img-circle"
+									height="300px" width="300px" url="../../img/perfil.jpg"
+									rendered="#{ingresoPerilControlador.nuevaPersona.foto == null}" />
+								<p:graphicImage styleClass="img-responsive img-circle"
+									height="300px" width="300px"
+									value="#{sessionControlador.imagenTemp}"
+									rendered="#{ingresoPerilControlador.nuevaPersona.foto != null}" />
+								</h:panelGroup>
+							</div>
+							<!-- END SIDEBAR USERPIC -->
+							<!-- SIDEBAR USER TITLE -->
+							<div class="profile-usertitle">
+								<div class="profile-usertitle-name">
+									<p:commandLink value="Seleccione una foto"  update="formImagenDlg" process="@this" actionListener="#{ingresoPerilControlador.mostrarCargaFoto()}"/>
+									<br/><br/>
+									<p:calendar id="fechaNacimiento" value="#{ingresoPerilControlador.nuevaPersona.fechaNacimiento}" showOn="button" placeholder="Fecha de Nacimiento" 
+									validatorMessage="Ingrese la fecha de nacimiento" requiredMessage="Ingrese la fecha de nacimiento" converterMessage="Ingrese la fecha de nacimiento"/>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-9">
+						<div class="profile-content">
+						<p:messages autoUpdate="true" closable="true"/>
+							<div class="panel panel-info">
+							  <div class="panel-heading">
+							    <h3 class="panel-title">Datos Personales</h3>
+							  </div>
+							  <div class="panel-body">
+							   	<h:panelGrid columns="2" style="width : 100% !important">
+							   		<h:selectOneMenu id="tipoIdentificacion" value="#{ingresoPerilControlador.codTipoIdentificacion}" styleClass="form-control form-control-sm">
+							   			<f:selectItems value="#{ingresoPerilControlador.tipoIdentificaciones}" var="ti" itemLabel="#{ti.nombre}" itemValue="#{ti.id}"/>
+							   		</h:selectOneMenu>
+							   			<p:inputText id="identificacion" placeholder="Identificacion" required="true" requiredMessage="Ingrese la identificacion"
+									styleClass="form-control"
+									value="#{ingresoPerilControlador.nuevaPersona.identificacion}" />
+							   	</h:panelGrid>
+							   	<br/>
+							   	<h:panelGrid columns="2" style="width : 100% !important">
+							   		<h:selectOneMenu styleClass="form-control form-control-sm" value="#{ingresoPerilControlador.codNacionalidad}"
+							   			required="true" requiredMessage="Ingrese la nacionalidad" validatorMessage="Ingrese la nacionalidad" converterMessage="Ingrese la nacionalidad">
+									  	<f:selectItem itemLabel="Seleccione su nacionalidad" noSelectionOption="true"/>
+									  	<f:selectItems value="#{ingresoPerilControlador.nacionalidades}" var="na" itemLabel="#{na.nombre}" itemValue="#{na.id}"/>
+									</h:selectOneMenu>
+									<h:selectOneMenu styleClass="form-control form-control-sm" value="#{ingresoPerilControlador.codEstadoCivil}"
+										required="true" requiredMessage="Ingrese el estado civil" validatorMessage="Ingrese el estado civil" converterMessage="Ingrese el estado civil">
+									  	<f:selectItem itemLabel="Seleccione su estado civil" noSelectionOption="true"/>
+									  	<f:selectItems value="#{ingresoPerilControlador.estadoCivil}" var="es" itemLabel="#{es.nombre}" itemValue="#{es.id}"/>
+									</h:selectOneMenu>
+							   	</h:panelGrid>
+								<br/>
+							   	<p:inputText placeholder="Nombres y Apellidos" required="true" requiredMessage="Ingrese los nombres y apellidos"
+									styleClass="form-control"
+									value="#{ingresoPerilControlador.nuevaPersona.nombre}" />
+									<br/>
+								<p:inputText placeholder="Correo"
+									styleClass="form-control"
+									value="#{ingresoPerilControlador.nuevaPersona.correo}" 
+									maxlength="50" required="true"	requiredMessage="Email no válido"
+									validatorMessage="Email no válido">
+										<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+									</p:inputText> <br/>
+								<h:panelGrid columns="2" style="width : 100% !important">
+							  		<p:inputText placeholder="Celular" required="true" requiredMessage="Ingrese el celular"
+									styleClass="form-control" maxlength="10" validatorMessage="El celular debe contener 10 digitos"
+									value="#{ingresoPerilControlador.nuevaPersona.celular}" /> 
+								<p:inputText placeholder="Telefono" required="true" requiredMessage="Ingrese el telefono"
+									styleClass="form-control" maxlength="10" validatorMessage="El telefono debe contener 10 digitos"
+									value="#{ingresoPerilControlador.nuevaPersona.telefono}" />
+							  	</h:panelGrid>
+								
+							  </div>
+							</div>
+							
+							<div class="panel panel-info">
+							  <div class="panel-heading">
+							    <h3 class="panel-title">Datos Ubicación</h3>
+							  </div>
+							  <div class="panel-body">
+							  	<h:panelGroup id="panelUbicacionId">
+							  		<h:selectOneMenu styleClass="form-control form-control-sm" value="#{ingresoPerilControlador.codPais}"
+							  			required="true" requiredMessage="Ingrese el pais" validatorMessage="Ingrese el pais" converterMessage="Ingrese el pais">
+								  		<f:selectItem itemLabel="Seleccione el pais" noSelectionOption="true"/>
+								  		<f:selectItems value="#{ingresoPerilControlador.paises}" var="pa" itemLabel="#{pa.nombre}" itemValue="#{pa.id}"/>
+								  		<f:ajax event="valueChange" execute="@this" render="panelUbicacionId" listener="#{ingresoPerilControlador.cargarProvincias}"/>
+								  	</h:selectOneMenu>
+								  	<br/>
+							  		<h:selectOneMenu styleClass="form-control form-control-sm" value="#{ingresoPerilControlador.codProvincia}"
+							  			required="true" requiredMessage="Ingrese la provincia" validatorMessage="Ingrese la provincia" converterMessage="Ingrese la provincia">
+								  		<f:selectItem itemLabel="Seleccione la provincia" noSelectionOption="true"/>
+								  		<f:selectItems value="#{ingresoPerilControlador.provincias}" var="pro" itemLabel="#{pro.nombre}" itemValue="#{pro.id}"/>
+								  		<f:ajax event="valueChange" execute="@this" render="panelUbicacionId" listener="#{ingresoPerilControlador.cargarCantones}"/>
+								  	</h:selectOneMenu>
+								  	<br/>
+								  	<h:selectOneMenu styleClass="form-control form-control-sm" value="#{ingresoPerilControlador.codCanton}" 
+								  		required="true" requiredMessage="Ingrese el canton" validatorMessage="Ingrese el canton" converterMessage="Ingrese el canton">
+								  		<f:selectItem itemLabel="Seleccione el canton" noSelectionOption="true"/>
+								  		<f:selectItems value="#{ingresoPerilControlador.cantones}" var="ca" itemLabel="#{ca.nombre}" itemValue="#{ca.id}"/>
+								  		<f:ajax event="valueChange" execute="@this" render="panelUbicacionId" listener="#{ingresoPerilControlador.cargarParroquias}"/>
+								  	</h:selectOneMenu>
+								  	<br/>
+								  	<h:selectOneMenu styleClass="form-control form-control-sm" value="#{ingresoPerilControlador.codParroquia}"
+								  		required="true" requiredMessage="Ingrese la parroquia" validatorMessage="Ingrese la parroquia" converterMessage="Ingrese la parroquia">
+								  		<f:selectItem itemLabel="Seleccione la parroquia" noSelectionOption="true"/>
+								  		<f:selectItems value="#{ingresoPerilControlador.parroquias}" var="par" itemLabel="#{par.nombre}" itemValue="#{par.id}"/>
+								  	</h:selectOneMenu>
+							  	</h:panelGroup>
+							  	
+							  	<br/>
+							   	<p:inputTextarea rows="5" cols="20" placeholder="Dirección"
+									styleClass="form-control" required="true" requiredMessage="Ingrese la direccion" validatorMessage="Ingrese la direccion"
+									value="#{ingresoPerilControlador.nuevaPersona.direccion}" />
+							  </div>
+							</div>
+							
+							<div class="panel panel-info">
+							  <div class="panel-heading">
+							    <h3 class="panel-title">Datos Administrativos</h3>
+							  </div>
+							  <div class="panel-body">
+							  	<h:panelGroup id="panelAdministrativoId">
+							  		<h:selectOneMenu styleClass="form-control form-control-sm" value="#{ingresoPerilControlador.codDepartamento}"
+							  			required="true" requiredMessage="Ingrese el departamento" validatorMessage="Ingrese el departamento" converterMessage="Ingrese el departamento">
+								  		<f:selectItem itemLabel="Seleccione el departamento" noSelectionOption="true"/>
+								  		<f:selectItems value="#{ingresoPerilControlador.departamentos}" var="dep" itemLabel="#{dep.nombre}" itemValue="#{dep.id}"/>
+								  		<f:ajax event="valueChange" execute="@this" render="panelAdministrativoId" listener="#{ingresoPerilControlador.cargarAreas}"/>
+								  	</h:selectOneMenu>
+								  	<br/>
+							  		<h:selectOneMenu styleClass="form-control form-control-sm" value="#{ingresoPerilControlador.codArea}"
+							  			required="true" requiredMessage="Ingrese el area" validatorMessage="Ingrese el area" converterMessage="Ingrese el area">
+								  		<f:selectItem itemLabel="Seleccione el area" noSelectionOption="true"/>
+								  		<f:selectItems value="#{ingresoPerilControlador.areas}" var="area" itemLabel="#{area.nombre}" itemValue="#{area.id}"/>
+								  		<f:ajax event="valueChange" execute="@this" render="panelAdministrativoId"/>
+								  	</h:selectOneMenu>
+								  	<br/>
+								  	<h:panelGrid columns="2" style="width : 100% !important">
+								  		<h:selectOneMenu styleClass="form-control form-control-sm" value="#{ingresoPerilControlador.codTipoPuesto}" disabled="#{ingresoPerilControlador.codArea == null}"
+								  			required="true" requiredMessage="Ingrese el tipo de puesto" validatorMessage="Ingrese el tipo de puesto" converterMessage="Ingrese el tipo de puesto">
+								  		<f:selectItem itemLabel="Seleccione el tipo de puesto" noSelectionOption="true"/>
+								  		<f:selectItems value="#{ingresoPerilControlador.tipoPuesto}" var="tp" itemLabel="#{tp.nombre}" itemValue="#{tp.id}"/>
+								  		<f:ajax event="valueChange" execute="@this" render="panelAdministrativoId" listener="#{ingresoPerilControlador.cargarPuestos}"/>
+								  	</h:selectOneMenu>
+							  		<h:selectOneMenu styleClass="form-control form-control-sm" value="#{ingresoPerilControlador.codPuesto}" disabled="#{ingresoPerilControlador.codArea == null}"
+							  			required="true" requiredMessage="Ingrese el puesto" validatorMessage="Ingrese el puesto" converterMessage="Ingrese el puesto">
+								  		<f:selectItem itemLabel="Seleccione el puesto" noSelectionOption="true"/>
+								  		<f:selectItems value="#{ingresoPerilControlador.puestos}" var="pu" itemLabel="#{pu.nombre}" itemValue="#{pu.id}"/>
+								  	</h:selectOneMenu>
+								  	</h:panelGrid>
+								  	<br/>
+								  	<p:inputText placeholder="Sueldo"
+								  	required="true" requiredMessage="Ingrese el sueldo"
+								  	validatorMessage="El sueldo ingresado es incorrecto"
+								  	converterMessage="El sueldo ingresado es incorrecto"
+									styleClass="form-control"
+									value="#{ingresoPerilControlador.nuevaPersona.sueldo}" />
+									<br/>
+									<h:panelGrid columns="2" style="width : 100% !important">
+										<p:calendar value="#{ingresoPerilControlador.nuevaPersona.fechaIngreso}" showOn="button" placeholder="Fecha de Ingreso" 
+										validatorMessage="Ingrese la fecha de ingreso" requiredMessage="Ingrese la fecha de ingreso" converterMessage="Ingrese la fecha de ingreso"/>
+									</h:panelGrid>
+								 </h:panelGroup>
+							  </div>
+							</div>
+							<br/>
+							<p:commandButton value="Guardar" action="#{ingresoPerilControlador.guardar()}" styleClass="btn btn-primary" process="formIngresoPerfil" update="formIngresoPerfil"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+		
+		<p:dialog header="Carga Imagen" widgetVar="imagenDlg" width="700px" modal="true">
+		    <h:form id="formImagenDlg">
+			    <div class="panel panel-info" align="center">
+			    	<p:fileUpload fileUploadListener="#{ingresoPerilControlador.cargarDocumento}" mode="advanced" dragDropSupport="false"
+           								fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
+			    	<br/>
+			    	<p:commandButton styleClass="btn-xsm btn-primary"  value="Aceptar" oncomplete="PF('imagenDlg').hide();" update="formIngresoPerfil:fotoPerilId"/>
+			    	<p:commandButton styleClass="btn-xsm btn-primary"  value="Cancelar" onclick="PF('imagenDlg').hide();" immediate="true"/>
+			    </div>
+		    </h:form>
+		</p:dialog> 
+		
+	</ui:define>
+</ui:composition>

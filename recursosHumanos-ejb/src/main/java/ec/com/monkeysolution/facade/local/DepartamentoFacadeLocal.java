@@ -29,5 +29,12 @@ public interface DepartamentoFacadeLocal {
     List<Departamento> findRange(int[] range);
 
     int count();
+
+    /**
+     * Metodo que obtiene los departamentos
+     * @param empresa
+     * @return
+     */
+	List<Departamento> obtenerDepartamentosXEmpresa(Integer empresa);
     
 }
